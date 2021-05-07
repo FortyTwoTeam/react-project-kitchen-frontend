@@ -35,7 +35,7 @@ const ArticlePreview = props => {
   };
   
   return (
-    <div className={s.article}>
+    <li className={s.article}>
     {article.photo && <div className = {s.article__photo}></div>}
       <div className = {s.article__post}>
         <div className = {s.article__header}>
@@ -63,7 +63,7 @@ const ArticlePreview = props => {
           </div>
         </div>
         <Link to={`/article/${article.slug}`} className={s.article__title}>
-          <h1>{article.title}</h1>
+          <h2>{article.title}</h2>
         </Link>
           <p className ={s.article__descr}>{article.description}</p>
         <div className={s.article__footer}>
@@ -81,7 +81,7 @@ const ArticlePreview = props => {
           </ul>
         </div>
         </div>
-    </div>
+    </li>
   );
 }
 

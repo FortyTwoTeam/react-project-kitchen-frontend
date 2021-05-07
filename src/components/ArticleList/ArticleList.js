@@ -1,6 +1,8 @@
-import ArticlePreview from './ArticlePreview/ArticlePreview';
-import ListPagination from './ListPagination';
+import ArticlePreview from '../ArticlePreview/ArticlePreview';
+import ListPagination from '../ListPagination';
 import React from 'react';
+
+import s from './ArticleList.module.scss'
 
 const ArticleList = props => {
   if (!props.articles) {
@@ -19,6 +21,7 @@ const ArticleList = props => {
 
   return (
     <div>
+    <ul className = {s.list}>
       {
         props.articles.map(article => {
           return (
@@ -26,7 +29,7 @@ const ArticleList = props => {
           );
         })
       }
-
+    </ul>
       <ListPagination
         pager={props.pager}
         articlesCount={props.articlesCount}

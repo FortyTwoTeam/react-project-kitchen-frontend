@@ -1,86 +1,51 @@
-import ArticleList from '../ArticleList';
+import ArticleList from '../ArticleList/ArticleList';
 import React from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import { CHANGE_TAB } from '../../constants/actionTypes';
+import TabsNavigation from './Tabs/TabsNavigation/TabsNavigation';
+import TabsItem from './Tabs/TabItem/TabsItem';
 
-const YourFeedTab = props => {
-  if (props.token) {
-    const clickHandler = ev => {
-      ev.preventDefault();
-      props.onTabClick('feed', agent.Articles.feed, agent.Articles.feed());
-    }
-
-    return (
-      <li className="nav-item">
-        <a  href=""
-            className={ props.tab === 'feed' ? 'nav-link active' : 'nav-link' }
-            onClick={clickHandler}>
-          Ваша лента
-        </a>
-      </li>
-    );
-  }
-  return null;
-};
-
-const GlobalFeedTab = props => {
-  const clickHandler = ev => {
-    ev.preventDefault();
-    props.onTabClick('all', agent.Articles.all, agent.Articles.all());
-  };
-  return (
-    <li className="nav-item">
-      <a
-        href=""
-        className={ props.tab === 'all' ? 'nav-link active' : 'nav-link' }
-        onClick={clickHandler}>
-        Лента
-      </a>
-    </li>
-  );
-};
-
-const TagFilterTab = props => {
-  if (!props.tag) {
-    return null;
-  }
-
-  return (
-    <li className="nav-item">
-      <a href="" className="nav-link active">
-        <i className="ion-pound"></i> {props.tag}
-      </a>
-    </li>
-  );
-};
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   ...state.articleList,
   tags: state.home.tags,
-  token: state.common.token
+  token: state.common.token,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onTabClick: (tab, pager, payload) => dispatch({ type: CHANGE_TAB, tab, pager, payload })
+const mapDispatchToProps = (dispatch) => ({
+  onTabClick: (tab, pager, payload) => dispatch({ type: CHANGE_TAB, tab, pager, payload }),
 });
 
-const MainView = props => {
+const MainView = (props) => {
+  const clickHandler = (type) => {
+    props.onTabClick(type, agent.Articles[type], agent.Articles[type]());
+  };
+
   return (
     <div className="col-md-9">
       <div className="feed-toggle">
-        <ul className="nav nav-pills outline-active">
+        <TabsNavigation>
+          <TabsItem
+            name="Ваша лента"
+            onTabClick={clickHandler}
+            type="feed" 
+            active={props.tab === 'feed' ? true : false}
+          />
+          <TabsItem
+            name="Лента"
+            onTabClick={clickHandler}
+            type="all" 
+            active={props.tab === 'all' ? true : false} 
+          />
+          <TabsItem 
+            name={`#${props.tag}`}
+            onTabClick={clickHandler}
+            type="all"false
+            active={props.tab ? false : true}
+            hide = {!props.tag}
+          />
+        </TabsNavigation>
 
-          <YourFeedTab
-            token={props.token}
-            tab={props.tab}
-            onTabClick={props.onTabClick} />
-
-          <GlobalFeedTab tab={props.tab} onTabClick={props.onTabClick} />
-
-          <TagFilterTab tag={props.tag} />
-
-        </ul>
       </div>
 
       <ArticleList
@@ -88,7 +53,8 @@ const MainView = props => {
         articles={props.articles}
         loading={props.loading}
         articlesCount={props.articlesCount}
-        currentPage={props.currentPage} />
+        currentPage={props.currentPage}
+      />
     </div>
   );
 };
