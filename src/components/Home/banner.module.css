@@ -1,0 +1,30 @@
+.banner {
+  width: 100%;
+  height: 164px;
+}
+
+.banner__container {
+  width: 1140px;
+  height: 100%;
+  margin: auto;
+
+  background-color: #F4F4F6;
+  color: #0000FF;
+
+  padding-top: 32px;
+  padding-bottom: 43px;
+
+  text-align: center;
+}
+
+.banner__name {
+  font-size: 64px;
+  line-height: 64px;
+  font-weight: 400;
+}
+
+.banner__text {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 400;
+}

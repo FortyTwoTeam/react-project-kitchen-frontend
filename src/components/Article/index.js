@@ -5,6 +5,7 @@ import agent from '../../agent';
 import { connect } from 'react-redux';
 import marked from 'marked';
 import { ARTICLE_PAGE_LOADED, ARTICLE_PAGE_UNLOADED } from '../../constants/actionTypes';
+import styles from './article.module.css';
 
 const mapStateToProps = state => ({
   ...state.article,
@@ -41,14 +42,11 @@ class Article extends React.Component {
     return (
       <div className="article-page">
 
-        <div className="banner">
-          <div className="container">
-
-            <h1>{this.props.article.title}</h1>
+        <div className={styles.banner}>
+          <div className={styles.banner__container}>
             <ArticleMeta
               article={this.props.article}
               canModify={canModify} />
-
           </div>
         </div>
         
@@ -57,7 +55,7 @@ class Article extends React.Component {
 
           <div className="row article-content">
             <div className="col-xs-12">
-
+              <h1>{this.props.article.title}</h1>
               <div dangerouslySetInnerHTML={markup}></div>
 
               <ul className="tag-list">

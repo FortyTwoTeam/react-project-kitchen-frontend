@@ -1,0 +1,78 @@
+.banner {
+  width: 100%;
+  height: 104px;
+  background-color: #F4F4F6;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.banner__container {
+  width: 1108px;
+  height: 40px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.banner__userdata {
+  height: 40px;
+  display: flex;
+}
+
+.banner__userdata img {
+  height: 40px;
+  width: 40px;
+  margin-right: 8px;
+}
+
+.userdata__info {
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+  
+}
+
+.userdata__name {
+  color: #0A0A0B;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.userdata__date {
+  color: #62626A;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.controls {
+  width: 380px;
+  display: flex;
+  justify-content: right;
+}
+
+.controls__delete {
+  background-color: #F4F4F6;
+  width: 188px;
+  height: 40px;
+  margin-left: 5px;
+
+  padding: 8px 0px;
+  color: black;
+  border: none;
+}
+
+.controls__delete span {
+  vertical-align: top;
+  
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.controls__delete:hover {
+  color: #F53D5C;
+}
+
+.controls__delete:hover path {
+  stroke: #F53D5C;
+}

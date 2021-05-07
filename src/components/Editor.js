@@ -170,7 +170,7 @@ class Editor extends React.Component {
                     type="button"
                     disabled={this.props.inProgress}
                     onClick={this.submitForm}>
-                    Publish Article
+                    Опубликовать запись
                   </button>
 
                 </fieldset>

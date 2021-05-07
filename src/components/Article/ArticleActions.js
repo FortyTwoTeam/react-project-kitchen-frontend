@@ -3,6 +3,9 @@ import React from 'react';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import { DELETE_ARTICLE } from '../../constants/actionTypes';
+import styles from './article.module.css';
+import Button from '../Button/Button'
+import DeleteIcon from '../Comment/DeleteIcon'
 
 const mapDispatchToProps = dispatch => ({
   onClickDelete: payload =>
@@ -16,19 +19,19 @@ const ArticleActions = props => {
   };
   if (props.canModify) {
     return (
-      <span>
+      <div className={styles.controls}>
 
         <Link
           to={`/editor/${article.slug}`}
-          className="btn btn-outline-secondary btn-sm">
-          <i className="ion-edit"></i> Редактировать запись
+          >
+          <Button children={'Редактировать запись'}/>
         </Link>
 
-        <button className="btn btn-outline-danger btn-sm" onClick={del}>
-          <i className="ion-trash-a"></i> Удалить запись
+        <button className={styles.controls__delete} onClick={del}>
+          <DeleteIcon /> <span>Удалить запись</span>
         </button>
 
-      </span>
+      </div>
     );
   }
 

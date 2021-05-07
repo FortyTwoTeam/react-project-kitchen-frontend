@@ -1,28 +1,38 @@
-import ArticleList from './ArticleList';
+import ArticleList from '../ArticleList';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import agent from '../agent';
+import agent from '../../agent';
 import { connect } from 'react-redux';
+
+import Button from '../Button/Button';
+import MinusIcon from './MinusIcon';
+import PlusIcon from './PlusIcon';
+
+import styles from './profile.module.css'
+
 import {
   FOLLOW_USER,
   UNFOLLOW_USER,
   PROFILE_PAGE_LOADED,
   PROFILE_PAGE_UNLOADED
-} from '../constants/actionTypes';
+} from '../../constants/actionTypes';
 
 const EditProfileSettings = props => {
   if (props.isUser) {
     return (
       <Link
         to="/settings"
-        className="btn btn-sm btn-outline-secondary action-btn">
-        <i className="ion-gear-a"></i> Редактировать профиль
+        className={styles.editbutton}>
+        <Button 
+          className={styles.editbutton}
+          children={'Редактировать профиль'} />
+
       </Link>
     );
   }
   return null;
 };
-
+        //<i className="ion-gear-a"></i> Редактировать профиль
 const FollowUserButton = props => {
   if (props.isUser) {
     return null;
@@ -45,13 +55,28 @@ const FollowUserButton = props => {
   };
 
   return (
-    <button
+    <Button 
+      className={styles.followbutton}
+      onClick={handleClick}>
+      {props.user.following ? 
+        <>
+          <MinusIcon />
+          <span>Отписаться</span>  
+        </> :
+        <>
+          <PlusIcon />
+          <span>Подписаться</span>
+        </>
+      }
+    </Button>
+    
+      /*<button
       className={classes}
       onClick={handleClick}>
       <i className="ion-plus-round"></i>
       &nbsp;
       {props.user.following ? 'Отписаться от' : 'Подписаться'} {props.user.username}
-    </button>
+    </button>*/
   );
 };
 
@@ -116,17 +141,17 @@ class Profile extends React.Component {
 
     const isUser = this.props.currentUser &&
       this.props.profile.username === this.props.currentUser.username;
-
+//col-xs-12 col-md-10 offset-md-1
     return (
       <div className="profile-page">
 
-        <div className="user-info">
-          <div className="container">
-            <div className="row">
-              <div className="col-xs-12 col-md-10 offset-md-1">
+        <div className={styles.banner}>
+          <div className={styles.banner__container}>
+            <div>
+              <div className="">
 
                 <img src={profile.image} className="user-img" alt={profile.username} />
-                <h4>{profile.username}</h4>
+                <h2>{profile.username}</h2>
                 <p>{profile.bio}</p>
 
                 <EditProfileSettings isUser={isUser} />
