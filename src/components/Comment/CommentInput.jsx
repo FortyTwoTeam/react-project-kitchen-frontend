@@ -10,17 +10,17 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const CommentInput = (props) => {
-  const [state, setState] = useState({body: ''})
+  const [body, setBody] = useState('')
 
-    const setBody = ev => {
-      setState({ body: ev.target.value });
+    const setCommentBody = ev => {
+      setBody(ev.target.value);
     };
 
     const createComment = ev => {
       ev.preventDefault();
       const payload = agent.Comments.create(props.slug,
-        { body: state.body});
-      setState({ body: '' });
+        {body});
+        setBody('');
       props.onSubmit(payload);
     };
 
@@ -29,8 +29,8 @@ const CommentInput = (props) => {
       <section className={styles.create__header}>
         <textarea className={styles.create__textarea}
           placeholder="Написать комментарий"
-          value={state.body}
-          onChange={setBody}
+          value={body}
+          onChange={setCommentBody}
           rows="3">
         </textarea>
       </section>
