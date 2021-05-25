@@ -8,6 +8,7 @@ import s from './ArticlePreview.module.scss'
 const FAVORITED_CLASS = s.article__btn_unfavorite;
 const NOT_FAVORITED_CLASS = s.article__btn_favorite;
 import Tags from '../Tags/Tags';
+import cn from 'classnames';
 
 const mapDispatchToProps = dispatch => ({
   favorite: slug => dispatch({
@@ -21,10 +22,14 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
+const mapStateToProps = state => ({
+  darkTheme: state.common.darkTheme,
+});
 
 
 
 const ArticlePreview = props => {
+  const {darkTheme} = props
   const article = props.article;
   const favoriteButtonClass = article.favorited ?
     FAVORITED_CLASS :
@@ -45,9 +50,9 @@ const ArticlePreview = props => {
     }
   })
 
-
+ let darkStyle = darkTheme ? s.dark : ''
   return (
-    <li className={s.article}>
+    <li className={cn(s.article, darkStyle)}>
     {article.photo && <div className = {s.article__photo}></div>}
       <div className = {s.article__post}>
         <div className = {s.article__header}>
@@ -90,4 +95,4 @@ const ArticlePreview = props => {
   );
 }
 
-export default connect(() => ({}), mapDispatchToProps)(ArticlePreview);
+export default connect(mapStateToProps, mapDispatchToProps)(ArticlePreview);

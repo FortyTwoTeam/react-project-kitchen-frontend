@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
+import ButtonTheme from '../ButtonTheme/ButtonTheme';
 import clsx from 'clsx';
 
 const {header, navbar, navbar_brand, nav, navbar_nav, pull_xs_right, nav_item, nav_link, user_item, ava_image} = styles;
@@ -71,7 +72,7 @@ const Header: FC<IHeader> = (props) => {
           <Link to="/" className={navbar_brand}>
             {props.appName.toLowerCase()}
           </Link>
-
+          <ButtonTheme />
           <ul className={clsx(nav, navbar_nav, pull_xs_right)}>
             <li className={nav_item}>
               <Link to="/" className={nav_link}>

@@ -14,17 +14,24 @@ import {
   PROFILE_FAVORITES_PAGE_UNLOADED,
   SETTINGS_PAGE_UNLOADED,
   LOGIN_PAGE_UNLOADED,
-  REGISTER_PAGE_UNLOADED
+  REGISTER_PAGE_UNLOADED,
+  SWITCH_THEME
 } from '../constants/actionTypes';
 
 const defaultState = {
   appName: 'Sum42',
   token: null,
-  viewChangeCounter: 0
+  viewChangeCounter: 0,
+  darkTheme: false
 };
 
 export default (state = defaultState, action) => {
   switch (action.type) {
+    case SWITCH_THEME:
+      return {
+        ...state,
+        darkTheme: !state.darkTheme
+      };
     case APP_LOAD:
       return {
         ...state,

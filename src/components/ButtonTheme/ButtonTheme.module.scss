@@ -1,0 +1,48 @@
+.wrapper{
+  display: flex;
+  align-items: center;
+  width: 200px;
+  margin-right: auto;
+}
+.text{
+  margin: 0;
+  padding: 0;
+  color:var(--dark);
+}
+.button{
+  margin-left: 20px;
+  position: relative;
+  cursor:pointer;
+  &:focus{
+    border:none;
+    outline:none;
+  }
+  &:before, &:after {
+    content: '';
+    position: absolute;
+  }
+  &:before{
+    width: 35px;
+    height: 15px;
+    border-radius: 10px;
+    background:#f2f2f2;
+    top: 0;
+    left: -50%;
+  }
+  &:after{
+    transition:.3s left linear;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background:#0000FF;
+    left: -50%;
+    bottom: 50%;
+    transform: translateY(50%);
+  }
+  
+}
+.active{
+  &:after{
+    left: 100%;
+  }
+}
