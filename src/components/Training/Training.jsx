@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Timer from './Timer'
 import {data} from './mock-data'
 import Button from '../Button/Button';
+import music from '../../assets/sounds/timesup.mp3'
 
 import s from './style.module.scss';
 
@@ -17,8 +18,9 @@ const Training = () => {
   let [score, setScore] = useState(initialScore);
 
  const onTimeExpired = () => {
-  // const audio = new Audio('../../assets/sounds/timesup.mp3');
-  // audio.play();
+  const audio = new Audio(music);
+  audio.volume = 0.1;
+  audio.play();
   setShownAnswer(true)
  }
  const nextQuestion = () => {
