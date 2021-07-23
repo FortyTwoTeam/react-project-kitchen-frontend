@@ -12,9 +12,7 @@ const Timer = (props) => {
     };
   });
   if (timeLeft === 0) {
-    {
-      props.onTimeExpired();
-    }
+    props.onTimeExpired();
   }
 
   return <p className={s.timer}>{timeLeft}</p>;
