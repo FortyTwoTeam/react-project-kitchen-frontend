@@ -15,8 +15,20 @@ import BaseAvatarIcon from '../../assets/ico/BaseAvatarIcon';
 import { EDITOR_PAGE_LOADED } from '../../slices/articles-slice/articles';
 import { LOGOUT } from '../../slices/common-slice/common';
 
-const { header, navbar, navbar_brand, nav, navbar_nav, pull_xs_right, nav_item, nav_link, ava_image, active_link } =
-  styles;
+const {
+  header,
+  navbar,
+  navbar_brand,
+  nav,
+  navbar_nav,
+  pull_xs_right,
+  nav_item,
+  t,
+  t_active,
+  nav_link,
+  ava_image,
+  active_link,
+} = styles;
 
 const mapDispatchToProps = (dispatch) => ({
   onLoad: (payload) => dispatch({ type: EDITOR_PAGE_LOADED, payload }),
@@ -57,12 +69,12 @@ const Header = (props) => {
           )}
           {props.currentUser && (
             <>
-            <li className={nav_item}>
-              <Link to="/training" className={`${nav_link} ${pathname === '/training' ? active_link : ''}`}>
-                <TrainingIcon />
-                <span>Тренажёр</span>
-              </Link>
-            </li>
+              <li className={nav_item}>
+                <Link to="/training" className={`${nav_link} ${t} ${pathname === '/training' ? t_active : ''}`}>
+                  <TrainingIcon />
+                  <span>Тренажёр</span>
+                </Link>
+              </li>
               <li className={nav_item}>
                 <Link to="/users" className={`${nav_link} ${pathname === '/users' ? active_link : ''}`}>
                   <UsersIcon />

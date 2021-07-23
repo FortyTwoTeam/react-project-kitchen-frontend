@@ -94,6 +94,18 @@ svg {
 	stroke: var(--primary);
 }
 
+.t:hover svg path {
+	fill: var(--primary);
+}
+
+.t_active {
+	color: var(--primary);
+}
+
+.t_active svg path {
+	fill: var(--primary);
+}
+
 .nav_link:focus{
 	text-decoration: none;
 	color: var(--primary);
