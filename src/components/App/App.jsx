@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import Article from '../Article';
 import Editor from '../Editor/Editor';
 import Home from '../Home';
+import Training from '../Training/Training';
 import Login from '../Auth/Login/Login';
 import Profile from '../Profile/Profile';
 import Users from '../Users/Users';
@@ -148,6 +149,7 @@ const App = (props) => {
             <ProtectedRoute path="/settings" children={<Settings />} />
             <ProtectedRoute path="/profile/:username" children={<Profile />} />
             <Route path="/users/" children={<Users />} />
+            <Route path="/training/" children={<Training />} />
             <Route path="*" children={<Page404 />} />
           </Switch>
         </>

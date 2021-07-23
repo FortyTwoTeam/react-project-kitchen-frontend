@@ -1,0 +1,81 @@
+.wrapper{
+  width: 50%;
+  margin: auto;
+  margin-top: 32px;
+  text-align:center
+}
+
+.title {
+  text-align: center;
+  font-size: 36px;
+  color: var(--dark-text);
+  margin-top: 32px;
+}
+
+table {
+  width: 100%
+}
+
+
+th, td {
+  padding: 5px;
+  text-align: left;
+  border: 1px solid --primary;
+  color:var(--dark-text);
+}
+
+tr:nth-child(even) {
+  background-color: --tags;
+}
+
+tr:hover {
+  background-color: #c9c9c993;
+}
+
+img {
+  width: 20px;
+}
+
+.finish {
+  margin: 10px;
+  color: var(--dark-text)
+}
+
+.correct {
+  background-color: green;
+  margin-top: 10px;
+  margin-right: 10px;
+  color: var(--dark-text)
+  
+}
+.incorrect {
+  background-color: red;
+  color: var(--dark-text)
+}
+.main {
+  background-color: royalblue;
+  margin: 10px;
+  color: var(--dark-text)
+}
+.timer {
+  font: bold 2rem serif;
+  color: var(--dark-text)
+}
+
+.section {
+  background-color: var(--tags-block);
+  padding: 10px;
+  border: solid 3px var(--primary);
+  border-radius: 10%;
+  color: var(--dark-text)
+}
+.section h4 {
+  // background-color: aqua;
+  font: bold 1.2rem serif;
+  color: var(--dark-text)
+}
+.section div {
+  // background-color: blueviolet;
+  font: italic 1.0rem serif;
+  color: var(--dark-text)
+}
