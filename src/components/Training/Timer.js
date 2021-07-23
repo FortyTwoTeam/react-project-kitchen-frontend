@@ -7,8 +7,11 @@ export default (props) => {
         const timer = setTimeout(() => {
             setTimeLeft(timeLeft-1);
         }, 1000);
-        });
-    if (timeLeft <= 0) {
+        return () => {
+            clearTimeout(timer)
+        }
+    });
+    if (timeLeft === 0) {
         props.onTimeExpired()
     }
 
