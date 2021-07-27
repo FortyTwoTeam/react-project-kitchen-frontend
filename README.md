@@ -63,6 +63,8 @@
 
 **[Никита Кандзюба](https://github.com/Der200)**
 
+**[Егор Шкиря](https://github.com/zuhijan)**
+
 
 ## You may also like..
 Схожие проекты наших друзей по бета-когорте:
